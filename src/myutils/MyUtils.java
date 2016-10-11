@@ -4,6 +4,11 @@
  */
 package myutils;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+
 /**
  *
  * @author Lluis Classe de funcions pròpies utils.
@@ -17,6 +22,9 @@ public class MyUtils {
      */
     public static String inverteix(String cadena) {
         String resultat = "";
+        for (int i = 0; i < cadena.length(); i++) {
+            resultat += cadena.charAt(cadena.length() - i - 1);
+        }
         return resultat;
     }
 
@@ -31,6 +39,22 @@ public class MyUtils {
      */
     public static int edat(int day, int month, int year) {
         int resultat = 0;
+        Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+        cal.set(Calendar.YEAR, -year);
+        cal.set(Calendar.MONTH, -month);
+        cal.set(Calendar.DAY_OF_YEAR, -day);
+        int dias = Calendar.getInstance(TimeZone.getDefault()).get(Calendar.DAY_OF_MONTH) - cal.get(Calendar.DAY_OF_MONTH);
+        int meses = Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH) - cal.get(Calendar.MONTH);
+        int años = Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR) - cal.get(Calendar.YEAR);
+        if (meses < 0) {
+
+            resultat = años - 1;
+
+        } else {
+            resultat = años;
+        }
+        System.out.println(dias + ", " + meses + ", " + años);
+
         return resultat;
     }
 
