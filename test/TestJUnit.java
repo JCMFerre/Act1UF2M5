@@ -75,5 +75,5 @@ public class TestJUnit {
         assertFalse(MyUtils.factorial(-33) != -1);
     }
     
-    // Test edat 5.
+    // 5 Test edat.
 }
