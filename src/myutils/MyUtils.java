@@ -65,7 +65,6 @@ public class MyUtils {
      * -1.
      */
     public static double factorial(double numero) {
-
         if (numero == 0) {
             return 1;
         } else {
