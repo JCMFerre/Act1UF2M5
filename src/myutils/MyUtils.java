@@ -22,8 +22,12 @@ public class MyUtils {
      */
     public static String inverteix(String cadena) {
         String resultat = "";
-        for (int i = 0; i < cadena.length(); i++) {
-            resultat += cadena.charAt(cadena.length() - i - 1);
+        if (cadena != null) {
+            for (int i = 0; i < cadena.length(); i++) {
+                resultat += cadena.charAt(cadena.length() - i - 1);
+            }
+        } else {
+            resultat = null;
         }
         return resultat;
     }
@@ -67,6 +71,8 @@ public class MyUtils {
     public static double factorial(double numero) {
         if (numero == 0) {
             return 1;
+        } else if (numero < 0) {
+            return -1;
         } else {
             double resultat = numero * factorial(numero - 1);
             return resultat;
