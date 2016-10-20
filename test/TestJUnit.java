@@ -37,6 +37,8 @@ public class TestJUnit {
     public void tearDown() {
     }
 
+    
+    // 3 Test inverteix.
     @Test
     public void testInverteix() {
         assertEquals("odnum aloH", MyUtils.inverteix("Hola mundo"));
@@ -52,6 +54,7 @@ public class TestJUnit {
         assertNull(MyUtils.inverteix(null));
     }
     
+    // 4 Test factorial.
     @Test
     public void testFactorial() {
         assertEquals(24, MyUtils.factorial(4), 0);
@@ -72,4 +75,5 @@ public class TestJUnit {
         assertFalse(MyUtils.factorial(-33) != -1);
     }
     
+    // Test edat 5.
 }
