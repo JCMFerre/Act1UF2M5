@@ -1,13 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package myutils;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
 
 /**
  *
@@ -37,29 +30,25 @@ public class MyUtils {
      * @param day int dia del naixement
      * @param month int mes del naixement
      * @param year int any del naixement
-     * @return edat de la persona, per edat>150 retorna -1, per dates
+     * @return edat de la persona, per edat > 150 retorna -1, per dates
      * impossibles retorna -2
      *
      */
     public static int edat(int day, int month, int year) {
-        int resultat = 0;
-        Calendar cal = Calendar.getInstance(TimeZone.getDefault());
-        cal.set(Calendar.YEAR, -year);
-        cal.set(Calendar.MONTH, -month);
-        cal.set(Calendar.DAY_OF_YEAR, -day);
-        int dias = Calendar.getInstance(TimeZone.getDefault()).get(Calendar.DAY_OF_MONTH) - cal.get(Calendar.DAY_OF_MONTH);
-        int meses = Calendar.getInstance(TimeZone.getDefault()).get(Calendar.MONTH) - cal.get(Calendar.MONTH);
-        int años = Calendar.getInstance(TimeZone.getDefault()).get(Calendar.YEAR) - cal.get(Calendar.YEAR);
-        if (meses < 0) {
-
-            resultat = años - 1;
-
+        int any = Calendar.getInstance().get(Calendar.YEAR) - year;
+        int mes = Calendar.getInstance().get(Calendar.MONTH) - month + 1;
+        int dia = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) - day;
+        if (any > 150) {
+            any = -1;
         } else {
-            resultat = años;
+            if (any < 0 || any <= 0 && mes < 0 || any <= 0 && mes <= 0 && dia < 0) {
+                any = -2;
+            }
+            if (any > 0 && mes <= 0 && mes < 0) {
+                any--;
+            }
         }
-        System.out.println(dias + ", " + meses + ", " + años);
-
-        return resultat;
+        return any;
     }
 
     /**
@@ -74,8 +63,7 @@ public class MyUtils {
         } else if (numero < 0) {
             return -1;
         } else {
-            double resultat = numero * factorial(numero - 1);
-            return resultat;
+            return numero * factorial(numero - 1);
         }
     }
 }
